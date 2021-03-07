@@ -13,26 +13,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::resource('categories',CategoryController::class,['except' => ['show'] ]);
+// Route::get('course',[CoursesController::class,'index'])->name('course');
+// Route::get('course/create',[CoursesController::class,'create'])->name('course.create');
 
+// Route::post('course',[CoursesController::class,'store']);
 
-use App\Http\Controllers\CoursesController;
-Route::get('course',[CoursesController::class,'index'])->name('course');
-Route::get('course/create',[CoursesController::class,'create'])->name('course.create');
+// Route::get('course/{id}/edit',[CoursesController::class,'edit']);
 
-Route::post('course',[CoursesController::class,'store']);
+// Route::put('course/{id}',[CoursesController::class,'update']);
 
-Route::delete('course/{id}',[CoursesController::class,'destroy']);
+// Route::delete('course/{id}',[CoursesController::class,'destroy']);
      
 // Route::get('course',[CoursesController::class,'course'])->name('course');
 
 
 
-
-
-
-Route::get('branch', function() {
-     return view('branch/branch');
+Route::get('/', function () {
+    return view('welcome');
 });
+
+
+use App\Http\Controllers\CourseesController;
+Route::resource('course', CourseesController::class, ['except' => ['show'] ]);
+
+use App\Http\Controllers\ShakaController;
+// Route::resource('branch', ShakaController::class, ['except' => ['show'] ]);
+
+Route::resource('shaka', ShakaController::class, ['except' => ['show'] ]);

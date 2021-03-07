@@ -30,6 +30,14 @@ class CoursesController extends Controller
   	 	 return redirect()->to('course');
   }
 
+  public function edit($id)
+  {
+     $this->data['course'] = Course::findOrFail($id);
+    
+  }
+
+
+
   public function destroy($id)
 	{
 	if(Course::find($id)->delete() ) {

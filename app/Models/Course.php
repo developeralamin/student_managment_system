@@ -10,4 +10,22 @@ class Course extends Model
     use HasFactory;
 
     protected $fillable = ['sort_course','full_course'];
+
+
+ public static function arrforSelect(){
+ 	$arr = [];
+    $courses = Course::all(); 	
+        foreach ($courses as $course) {
+            $arr[$course->id] = $course->full_course;
+        }
+
+        return $arr;
+ }
+
+ public function shaka()
+   {
+   	  return $this->hasMany(Shaka::class);
+   }
+
+
 }

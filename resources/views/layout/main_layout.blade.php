@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>SMS-Project</title>
-
+<link  rel="shortcut icon" type="image/x-icon" href="{{ asset('asset/img/download.png') }}">
     <!-- Custom fonts for this template-->
     <link href="{{ asset('asset/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
@@ -72,12 +72,12 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsethree"
                     aria-expanded="true" aria-controls="collapsethree">
-                    <i class="fas fa-fw fa-cog"></i>
+                   <i class="fa fa-university" aria-hidden="true"></i>
                     <span>Branch</span>
         </a>
     <div id="collapsethree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{ url('branch') }}">Add Branch</a>
+            <a class="collapse-item" href="{{ url('shaka') }}">Add Branch</a>
      </div>
     </div>
  </li>           

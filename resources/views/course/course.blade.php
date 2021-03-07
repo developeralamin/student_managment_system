@@ -50,9 +50,9 @@
           <td>{{ $course->full_course }}</td>
 
           <td class="text-right">
-		<form method='post' action="{{ url('course/' .$course->id) }}">
+	<form method='post' action="{{ route('course.destroy',['course' => $course->id]) }}">
             @csrf
-		     <a href=""class="btn btn-info">
+		    <a href="{{ route('course.edit',['course' =>$course->id]) }}"class="btn btn-info">
 		      <i class="fa fa-edit"></i>
 		     </a>  	
 

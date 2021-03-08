@@ -17,8 +17,7 @@ class CourseesController extends Controller
      */
     public function index()
     {
-    $this->data['courses'] = Course::all();
-
+       $this->data['courses'] = Course::all();
        return view('course.course',$this->data);
     }
 

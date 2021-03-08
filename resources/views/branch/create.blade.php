@@ -33,13 +33,14 @@
 
    {{--  @if($mode == 'Edit')
 
-    {!! Form::model($course, ['route' =>['course.update',$course->id],'method' => 'put']) !!}
+    {!! Form::model($shaka, ['route' =>['shaka.update',$shaka->id], 
+    'method' => 'put']) !!}
 
     @else --}}
 
     {!! Form::open(['route' => 'shaka.store','method' => 'post']) !!}
 
-    {{-- @endif --}}
+   {{--  @endif --}}
 
   <div class="form-group">
     <label for="sort_course">Full Course <span class="text-danger">*</span> </label>

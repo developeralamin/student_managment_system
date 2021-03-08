@@ -50,9 +50,9 @@
           <td class="text-right">
   <form method='post' action="{{ route('shaka.destroy',['shaka' => $shaka->id]) }}">
             @csrf
-        <a href="{{ route('shaka.edit',['shaka' =>$shaka->id]) }}"class="btn btn-info">
+       {{--  <a href="{{ route('shaka.edit',['shaka' =>$shaka->id]) }}"class="btn btn-info">
           <i class="fa fa-edit"></i>
-         </a>   
+         </a> --}}   
 
 
         @method('DELETE')               

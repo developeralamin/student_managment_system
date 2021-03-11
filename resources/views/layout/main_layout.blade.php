@@ -82,7 +82,20 @@
     </div>
  </li>           
            
-
+ 
+<!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsefour"
+                    aria-expanded="true" aria-controls="collapsefour">
+                  <i class="fas fa-fw fa-users"></i>
+                    <span>Student Details</span>
+        </a>
+    <div id="collapsefour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+         <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ url('student_info') }}">Add Student</a>
+     </div>
+    </div>
+ </li>       
             
 
             <!-- Divider -->

@@ -38,6 +38,8 @@ use App\Http\Controllers\CourseesController;
 Route::resource('course', CourseesController::class, ['except' => ['show'] ]);
 
 use App\Http\Controllers\ShakaController;
-// Route::resource('branch', ShakaController::class, ['except' => ['show'] ]);
-
 Route::resource('shaka', ShakaController::class, ['except' => ['show'] ]);
+
+use App\Http\Controllers\StudentController;
+Route::resource('student_info', StudentController::class);
+

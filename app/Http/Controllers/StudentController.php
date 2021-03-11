@@ -32,8 +32,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-       $this->data['courses'] = Course::arrforSelect();
-       $this->data['shakas'] =  Shaka::arrforSelectShaka();
+      $this->data['mode']           = 'create';
+       $this->data['courses']       = Course::arrforSelect();
+       $this->data['shakas']        =  Shaka::arrforSelectShaka();
        return view('student.create',$this->data);
     }
 
@@ -74,7 +75,11 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+       $this->data['courses']        = Course::arrforSelect();
+       $this->data['student_info']   =Student_info::findOrFail($id);
+       $this->data['mode']           = 'Edit';
+
+       return view('student.create',$this->data);
     }
 
     /**
@@ -84,9 +89,22 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StudentRequest $request, $id)
     {
-        //
+        $data                              = $request->all();
+        
+        $student_info                      = Student_info::find($id);
+        $student_info->name                = $data['name'];
+        $student_info->father_name         = $data['father_name'];
+        $student_info->course_id           = $data['course_id'];
+        $student_info->phone_no            = $data['phone_no'];
+        $student_info->gender              = $data['gender'];
+
+        if( $student_info->save() ) {
+            Session::flash('message', 'Student Updated Successfully');
+        }
+        
+        return redirect()->to('student_info');
     }
 
     /**

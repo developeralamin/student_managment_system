@@ -11,4 +11,17 @@ class Controller extends BaseController
 {
 	public $data;
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+
+
+   public function __construct()
+    {
+    	$this->data['main_menu'] = '';
+    	$this->data['sub_menu']  = '';
+
+    	$this->data['tab_menu']  = '';
+
+    }
+
+
 }

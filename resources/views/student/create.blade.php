@@ -3,9 +3,15 @@
 @section('main_content')
 
   <div class="row page-header mb-5">
+  	 @if($mode == 'Edit')
+       <div class="col-md-6">
+       	 <h2>Update <strong> {{ $student_info->name }}</strong> information</h2>
+       </div>
+       @else
        <div class="col-md-6">
        	 <h2>Add New Student</h2>
        </div>
+       @endif
    
   	<div class="col-md-6 text-right">
   	 	<a href="{{ route('student_info.store') }}" class="btn btn-info"> <i class="fa fa-minus"></i> Back </a>
@@ -25,25 +31,29 @@
 
 <div class="card shadow page-header mb-4">
    <div class="card-header py-3">
-
-     <h6 class="m-0 font-weight-bold text-primary">
+  @if($mode == 'Edit')
+  <h6 class="m-0 font-weight-bold text-primary">
+     Update <strong> {{ $student_info->name }}</strong> information
+      </h6>
+   @else 
+<h6 class="m-0 font-weight-bold text-primary">
       Add New Student
       </h6>
-            
+  @endif          
      </div>
       <div class="card-body row justify-content-md-center">
   <div class="col-md-6">
 
-   {{--  @if($mode == 'Edit')
+    @if($mode == 'Edit')
 
-    {!! Form::model($shaka, ['route' =>['shaka.update',$shaka->id], 
-    'method' => 'put']) !!}
+    {{  Form::model($student_info, ['route' =>['student_info.update',$student_info->id], 
+    'method' => 'put']) }}
 
-    @else --}}
+    @else
 
     {!! Form::open(['route' => 'student_info.store','method' => 'post']) !!}
 
-   {{--  @endif --}}
+    @endif
 
 
 
@@ -56,7 +66,7 @@
     <label for="branch_name"> Father Name<span class="text-danger">*</span></label>
      {{ Form::text('father_name', NULL, [ 'class'=>'form-control', 'id' => 'branch_name', 'placeholder' => 'Father Name' ]) }}
   </div>
-  
+
   <div class="form-group">
     <label for="sort_course">Full Course <span class="text-danger">*</span> </label>
   

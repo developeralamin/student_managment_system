@@ -28,10 +28,9 @@ use Illuminate\Support\Facades\Route;
 // Route::get('course',[CoursesController::class,'course'])->name('course');
 
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\DashboardController;
+Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
+Route::get('/',[DashboardController::class,'index'])->name('dashboard');
 
 
 use App\Http\Controllers\CourseesController;

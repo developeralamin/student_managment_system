@@ -3,21 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+use App\Models\Student_info;
 use App\Models\Course;
-use App\Http\Requests\CourseRequest;
+use App\Models\Shaka;
 
 
-class CourseesController extends Controller
+class DashboardController extends Controller
 {
 
     public function __construct()
     {
         parent::__construct();
-        $this->data['main_manu']    = 'Course';
-        $this->data['sub_manu']     = 'Course';
+        $this->data['main_manu']    = 'Dashboard';
     }
-
 
     /**
      * Display a listing of the resource.
@@ -26,8 +24,12 @@ class CourseesController extends Controller
      */
     public function index()
     {
-       $this->data['courses'] = Course::all();
-       return view('course.course',$this->data);
+        
+        $this->data['totalUsers']        = Student_info::count('id');
+        $this->data['totalShaka']        = Shaka::count('id');
+        $this->data['totalCourse']       = Course::count('id');
+
+        return view('welcome', $this->data);
     }
 
     /**
@@ -37,8 +39,7 @@ class CourseesController extends Controller
      */
     public function create()
     {
-        $this->data['mode']     = 'create';
-        return view('course.create',$this->data);
+        //
     }
 
     /**
@@ -47,14 +48,9 @@ class CourseesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CourseRequest $request)
+    public function store(Request $request)
     {
-    $formdata = $request->all();
-     if( Course::create($formdata)){
-      Session::flash('message', 'Course Added Successfully');
-     }
-     
-    return redirect()->to('course');
+        //
     }
 
     /**
@@ -76,9 +72,7 @@ class CourseesController extends Controller
      */
     public function edit($id)
     {
-         $this->data['course']   = Course::findOrFail($id);
-         $this->data['mode']     = 'Edit';
-         return view('course.create',$this->data);
+        //
     }
 
     /**
@@ -90,15 +84,7 @@ class CourseesController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $data                       = $request->all();
-         $course                     = Course::find($id);
-         $course->sort_course        = $data['sort_course'];
-         $course->full_course        = $data['full_course'];
-
-     if($course->save()) {
-            Session::flash('message', 'Course Update Successfully');
-        }
-        return redirect()->to('course');
+        //
     }
 
     /**
@@ -109,11 +95,6 @@ class CourseesController extends Controller
      */
     public function destroy($id)
     {
-       if(Course::find($id)->delete() ) {
-
-        Session::flash('message', 'Course Delete Successfully');
-        
-    }
-     return redirect()->to('course');
+        //
     }
 }

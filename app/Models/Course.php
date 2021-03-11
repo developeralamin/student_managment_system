@@ -28,4 +28,10 @@ class Course extends Model
    }
 
 
+ public function student_info()
+   {
+      return $this->hasMany(Student_info::class);
+   }
+
+   
 }

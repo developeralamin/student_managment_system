@@ -15,18 +15,18 @@
 <!-- DataTales Example -->
 <div class="card shadow page-header mb-4">
    <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-primary">All Branch Information</h6>
+       <h6 class="m-0 font-weight-bold text-primary">All Student Information</h6>
     </div>
   <div class="card-body">
      <div class="table-responsive">
    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                   <tr>                                              
-                    <th>ID</th>      
+                    {{-- <th>ID</th>       --}}
                     <th>Name</th>      
                     <th>Father Name</th>      
                     <th>Course Name</th>      
-                    <th>Branch Name</th>      
+                    {{-- <th>Branch Name</th>  --}}     
                     <th>Phone No.</th>      
                     <th>Gender</th>                             
                     <th class="text-right">Actions</th>                     
@@ -35,11 +35,11 @@
 
                <tfoot>
                   <tr>                                              
-                    <th>ID</th>      
+                    {{-- <th>ID</th>       --}}
                     <th>Name</th>      
                     <th>Father Name</th>      
                     <th>Course Name</th>      
-                    <th>Branch Name</th>      
+                    {{-- <th>Branch Name</th>       --}}
                     <th>Phone No.</th>      
                     <th>Gender</th>                             
                     <th class="text-right">Actions</th>                     
@@ -52,13 +52,13 @@
 @foreach($student_infos as $student_info )      
 
        <tr>
-          <td>{{ $student_info->id }}</td>
+          {{-- <td>{{ $student_info->id }}</td> --}}
           <td>{{ $student_info->name}}</td>
           <td>{{ $student_info->father_name }}</td>
-          <td>{{ $student_info->course_id }}</td>
-          <td>{{ $student_info->shaka_id }}</td>
+          <td>{{ $student_info->course->full_course}}</td>
           <td>{{ $student_info->phone_no }}</td>
-          <td>{{ $student_info->gender }}</td>
+          <td>{{ ($student_info->gender == 1) ? 'Male':'Female' }} </td>
+
           <td class="text-right">
   <form method='post' action="{{ route('student_info.destroy',['student_info' => $student_info->id]) }}">
             @csrf

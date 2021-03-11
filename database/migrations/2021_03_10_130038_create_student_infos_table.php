@@ -19,7 +19,7 @@ class CreateStudentInfosTable extends Migration
             $table->string('father_name',200);
             $table->foreignId('course_id')->nullable();
             $table->foreignId('shaka_id')->nullable();
-            $table->string('phone_no');
+            $table->string('phone_no')->nullable();
             $table->string('gender');
             $table->timestamps();
         });

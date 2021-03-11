@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Shaka;
 use App\Models\Student_info;
-// use App\Http\Requests\StudentRequest;
+use App\Http\Requests\StudentRequest;
 use Illuminate\Support\Facades\Session;
 
 
@@ -32,7 +32,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-       return view('student.create');
+       $this->data['courses'] = Course::arrforSelect();
+       $this->data['shakas'] =  Shaka::arrforSelectShaka();
+       return view('student.create',$this->data);
     }
 
     /**
@@ -41,9 +43,13 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StudentRequest $request)
     {
-        //
+        $formdata = $request->all();
+       
+        Student_info::create($formdata);
+
+        return redirect()->to('student_info');
     }
 
     /**
@@ -54,7 +60,10 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $this->data['student_info']       = Student_info::find($id);
+        $this->data['tab_menu']           ='user_info';
+
+        return view('student.show',$this->data);
     }
 
     /**

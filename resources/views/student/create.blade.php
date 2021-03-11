@@ -12,7 +12,7 @@
   	 </div>
   </div>
   
- @if ($errors->any())
+@if ($errors->any())
       <div class="alert alert-danger">
           <ul>
               @foreach ($errors->all() as $error)
@@ -45,39 +45,37 @@
 
    {{--  @endif --}}
 
-  {{-- <div class="form-group">
-    <label for="sort_course">Full Course <span class="text-danger">*</span> </label>
-  
-     {{ Form::select('course_id',$courses ,NULL,[ 'class'=>'form-control', 'id' => 'course', 'placeholder' => 'Select Course Name' ])}}
- 
-  </div> --}}
+
 
   <div class="form-group">
     <label for="branch_name"> Name<span class="text-danger">*</span></label>
      {{ Form::text('name', NULL, [ 'class'=>'form-control', 'id' => 'branch_name', 'placeholder' => ' Name' ]) }}
   </div>
 
-  <div class="form-group">
-    <label for="branch_name">Course Name<span class="text-danger">*</span></label>
-     {{ Form::text('name', NULL, [ 'class'=>'form-control', 'id' => 'branch_name', 'placeholder' => 'Course Name' ]) }}
-  </div>
-
 <div class="form-group">
-    <label for="branch_name">Branch Name<span class="text-danger">*</span></label>
-     {{ Form::text('name', NULL, [ 'class'=>'form-control', 'id' => 'branch_name', 'placeholder' => 'Branch Name' ]) }}
+    <label for="branch_name"> Father Name<span class="text-danger">*</span></label>
+     {{ Form::text('father_name', NULL, [ 'class'=>'form-control', 'id' => 'branch_name', 'placeholder' => 'Father Name' ]) }}
   </div>
-
+  
+  <div class="form-group">
+    <label for="sort_course">Full Course <span class="text-danger">*</span> </label>
+  
+     {{ Form::select('course_id',$courses ,NULL,[ 'class'=>'form-control', 'id' => 'course', 'placeholder' => 'Select Course Name' ])}}
+ 
+  </div>
 
 <div class="form-group">
     <label for="branch_name">Phone No<span class="text-danger">*</span></label>
-     {{ Form::text('name', NULL, [ 'class'=>'form-control', 'id' => 'branch_name', 'placeholder' => 'Phone Number' ]) }}
+     {{ Form::text('phone_no', NULL, [ 'class'=>'form-control', 'id' => 'branch_name', 'placeholder' => 'Phone Number' ]) }}
   </div>
 
 
 <div class="form-group">
     <label for="branch_name">Gender<span class="text-danger">*</span></label>
-     {{ Form::text('name', NULL, [ 'class'=>'form-control', 'id' => 'branch_name', 'placeholder' => 'Gender' ]) }}
+  {{  Form::select('gender',['1'=>'Male','0'=>'Female'],NULL,['class '=>'form-control','id' => 'product']) }}
   </div>
+
+
   <button type="submit" class="btn btn-primary">Submit</button>
 
 {!! Form::close() !!}                             
